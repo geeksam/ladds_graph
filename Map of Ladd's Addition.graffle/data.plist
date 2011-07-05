@@ -4823,7 +4823,10 @@
 		</dict>
 	</array>
 	<key>GridInfo</key>
-	<dict/>
+	<dict>
+		<key>SnapsToGrid</key>
+		<string>YES</string>
+	</dict>
 	<key>GuidesLocked</key>
 	<string>NO</string>
 	<key>GuidesVisible</key>
@@ -4887,7 +4890,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2011-06-30 22:11:39 -0700</string>
+	<string>2011-07-05 09:40:06 -0700</string>
 	<key>Modifier</key>
 	<string>Sam Livingston-Gray</string>
 	<key>NotesVisible</key>
@@ -4958,7 +4961,7 @@
 			</dict>
 		</array>
 		<key>Frame</key>
-		<string>{{114, 0}, {1033, 778}}</string>
+		<string>{{475, 8}, {1034, 1020}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
@@ -4972,7 +4975,7 @@
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{80.8, 399.2}, {707.2, 488}}</string>
+		<string>{{80.8, 93.6}, {708, 681.6}}</string>
 		<key>Zoom</key>
 		<real>1.25</real>
 		<key>ZoomValues</key>
