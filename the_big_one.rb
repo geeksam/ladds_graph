@@ -15,7 +15,8 @@ path = Ladds.path(42)
 # puts 'Score: %d' % path.score
 
 paths = path.go_forth_and_multiply({
-  :max_path_length => 100,
+  :max_path_length => 200,
+  :max_backtrack_count => 15,
   :backtrack_avoidance_factor => 4,
   :persistence_factor => 5,
   # :trace_recursion => true,  #temp

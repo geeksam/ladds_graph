@@ -102,6 +102,9 @@ class Map < Graph
 
       # Respect the max_path_length setting
       return unless segments.length < options[:max_path_length]
+      
+      # ditto the max_backtrack_count setting
+      return if backtracked_streets.length > options[:max_backtrack_count]
 
       # Don't go any further if we haven't improved our score over the past N segments
       last_n_segments = segments.last_n(options[:persistence_factor])
