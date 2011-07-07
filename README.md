@@ -20,6 +20,16 @@ For those of you who don't want to open a random .doc file, here's the tl;dr:
 
 (Note that backtracks effectively cost you two points, because the second time you ride down a street, its contribution from your score changes from +1 to -1!)
 
+# Real-World Results
+
+According to Katie,
+
+> Turn-out for the ride was split, [...] with a few game geek dads trying to optimize the problem and a lot of 7-to-9-year-olds exploring the notion of a random walk.
+
+As for the results:
+
+> Top score was 93, second best was 91, after that we were down in the 70s & below.
+
 # If you'd like to play with this
 
 Please do -- that's why I've put it on github.
