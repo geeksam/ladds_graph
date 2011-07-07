@@ -44,7 +44,7 @@
 	<key>Creator</key>
 	<string>Sam Livingston-Gray</string>
 	<key>DisplayScale</key>
-	<string>1 0/72 in = 1 0/72 in</string>
+	<string>1 0/72 in = 1.0000 in</string>
 	<key>GraphDocumentVersion</key>
 	<integer>6</integer>
 	<key>GraphicsList</key>
@@ -4890,7 +4890,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2011-07-05 09:40:06 -0700</string>
+	<string>2011-07-05 14:47:57 -0700</string>
 	<key>Modifier</key>
 	<string>Sam Livingston-Gray</string>
 	<key>NotesVisible</key>
@@ -4961,7 +4961,7 @@
 			</dict>
 		</array>
 		<key>Frame</key>
-		<string>{{475, 8}, {1034, 1020}}</string>
+		<string>{{646, 340}, {1034, 578}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
@@ -4975,15 +4975,15 @@
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{80.8, 93.6}, {708, 681.6}}</string>
+		<string>{{0, 50}, {885, 410}}</string>
 		<key>Zoom</key>
-		<real>1.25</real>
+		<real>1</real>
 		<key>ZoomValues</key>
 		<array>
 			<array>
 				<string>Canvas 1</string>
-				<real>1.25</real>
 				<real>1</real>
+				<real>1.25</real>
 			</array>
 		</array>
 	</dict>
