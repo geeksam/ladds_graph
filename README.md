@@ -8,6 +8,10 @@ I missed the ride, but a week or two later I emailed [Katie Proctor](http://civi
 
 Based on that, I produced another image with all the intersections numbered (I sorta knew there were a lot, but 99 seemed crazy), and then used that to manually encode a simple graph.
 
+# Map
+
+<img src="Map of Ladd's Addition.png">
+
 # Quick Scoring Summary
 
 For those of you who don't want to open a random .doc file, here's the tl;dr:
