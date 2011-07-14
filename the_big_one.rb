@@ -14,14 +14,16 @@ path = Ladds.path(42)
 # puts 'length: %d' % path.length
 # puts 'Score: %d' % path.score
 
-paths = path.go_forth_and_multiply({
-  :max_path_length => 200,
-  :max_backtrack_count => 15,
-  :backtrack_avoidance_factor => 4,
-  :persistence_factor => 5,
-  # :trace_recursion => true,  #temp
-  :debug_every_n_steps => 50_000,
-})
+opts = {
+  :max_backtrack_count        => 11,
+  :backtrack_avoidance_factor => 5,
+  :persistence_factor         => 3,
+}
+paths = path.go_forth_and_multiply(opts.merge({
+  :debug_every_n_steps     => 50_000,
+  # :stop_after_n_iterations => 50_000,
+  :max_path_length         => 200,
+}))
 
 puts "\n\nDone!"
 puts paths.to_a.sort.map { |e| e.last.inspect }.join("\n")
