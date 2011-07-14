@@ -81,6 +81,9 @@ class Map < Graph
       def increment!
         @count += 1
       end
+      def reset!
+        @count = 0
+      end
     end
 
     def dfs_counter
@@ -99,6 +102,9 @@ class Map < Graph
           interesting_paths.to_a.sort.map { |e| e.last.inspect }.join("\n"),
         ]
       end
+
+      # die early if instructed to
+      return if options[:stop_after_n_iterations] && dfs_counter.count > options[:stop_after_n_iterations].to_i
 
       # Respect the max_path_length setting
       return unless segments.length < options[:max_path_length]
