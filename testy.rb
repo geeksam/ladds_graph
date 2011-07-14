@@ -8,7 +8,7 @@ path = Ladds.path(42)
 
 puts "Max backtracks\tAvoidance factor\tPersistence factor\tBest score\tBest path"
 
-(10..20).each do |max_backtracks|
+(5..11).each do |max_backtracks|
   (1..7).each do |avoidance|
     (3..8).each do |persistence|
       path.dfs_counter.reset!
