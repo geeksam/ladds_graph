@@ -10,7 +10,7 @@ Based on that, I produced another image with all the intersections numbered (I s
 
 # Map
 
-<img src="Map of Ladd's Addition.png">
+<img src="https://github.com/geeksam/ladds_graph/raw/master/Map%20of%20Ladd's%20Addition.png">
 
 # Quick Scoring Summary
 
