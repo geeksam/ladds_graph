@@ -1,0 +1,3 @@
+- Dave had some interesting ideas for doing a genetic algorithm using random circuits.
+- Write an HTML UI that lets you click on nodes to build a path interactively.  (On click, find the nearest node and assume that's what was clicked on.)
+- Import Dave's X/Y coordinates back into the Ruby script and use them to build weighting factors for each edge (good old a^2 + b^2 = c^2).
