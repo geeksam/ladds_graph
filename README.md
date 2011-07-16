@@ -42,10 +42,6 @@ Please do -- that's why I've put it on github.
 
 Most of the code I've written to solve this particular problem lives in lib/map.rb.  The scoring mechanism is built into the class Map::MapPath, but there should be enough examples in tests/map_tests.rb (under the describe block for the #score method) for you to be able to build your own scoring mechanism.  Or, if you want to peek at my scoring implementation without seeing, most of my solution is in the Map::MapPath#go_forth_and_multiply method, so if you just fold that method up, you should be able to remain mostly unbiased.  (=
 
-## CAVEAT EMPTOR
-
-I've found and fixed one error in the map image (I'd originally skipped #5 while labeling the nodes, but fixed that), and at least one error in the graph encoding.  There may be more.  You are strongly encouraged to double-check both of these things for yourself if you're interested in computing a result you can ride in the real world.  (Of course, if you just want to play with a variant of the Traveling Salesman Problem, that doesn't matter quite so much.)
-
 ## Enjoy!
 
 Feel free to email me:  geeksam at gmail.
