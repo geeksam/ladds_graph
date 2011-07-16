@@ -15,13 +15,14 @@ class Map < Graph
   end
 
   class MapPath < Graph::Path
-    attr_reader :unique_streets, :backtracked_streets, :start, :finish
+    attr_reader :unique_streets, :backtracked_streets, :border_streets, :start, :finish
     
     def initialize(*args)
       super(*args)
       @start = @finish = current_node
       @unique_streets      = Set.new
       @backtracked_streets = Set.new
+      @border_streets      = Set.new
     end
     def initialize_copy(original)
       super
@@ -36,7 +37,14 @@ class Map < Graph
         node = edge.other_node(node)
         nodes << node
       end
-      '<Path (%d edges, %d points) %s>' % [segments.length, score, nodes.join(', ')]
+      '<Path (%d edges, %d uniques, %d backtracks, %d borders, %d points) %s>' % [
+        segments.length,
+        unique_streets.length,
+        backtracked_streets.length,
+        border_streets.length,
+        score,
+        nodes.join(', '),
+      ]
     end
     
     def traverse(edge)
@@ -45,7 +53,8 @@ class Map < Graph
       @finish = current_node
       case
       when edge.points == 0
-        # don't care how many times we traverse borders
+        # don't care how many times we traverse borders, but count 'em anyway
+        border_streets.add(edge)
       when unique_streets.include?(edge)
         # first backtracking:  move the street from the positive set to the negative set
         unique_streets.delete(edge)
@@ -118,6 +127,9 @@ class Map < Graph
       
       # Don't consider backtracking across the last N segments
       candidates = available_edges - segments.last_n(options[:backtrack_avoidance_factor])
+
+      # Randomize?
+      candidates.shuffle! if options[:randomize]
 
       # Keep on truckin'
       candidates.each do |edge|
