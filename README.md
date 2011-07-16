@@ -46,4 +46,8 @@ Most of the code I've written to solve this particular problem lives in lib/map.
 
 Feel free to email me:  geeksam at gmail.
 
+## See also
+
+My coworker Dave's [JavaScript code](https://github.com/mildavw/Ladds) playing with the same problem, from a different angle.
+
 -Sam
