@@ -48,6 +48,6 @@ Feel free to email me:  geeksam at gmail.
 
 ## See also
 
-My coworker Dave's [JavaScript code](https://github.com/mildavw/Ladds) playing with the same problem, from a different angle.
+My coworker Dave's [JavaScript code](https://github.com/mildavw/ladds) playing with the same problem, from a different angle.
 
 -Sam
