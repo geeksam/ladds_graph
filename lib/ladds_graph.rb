@@ -9,7 +9,7 @@ def S(n1, n2); Ladds.street(n1, n2); end
 def B(n1, n2); Ladds.border(n1, n2); end
 
 # This was generated as output from ladds_digraph.rb, which has some basic sanity-check tests.
-# I'm *pretty* sure this is error-free.  Should spot-check it again sometime.
+# I've checked this; I'm confident that it's good.  -2011-07-19
   # Border edges
   B  1,  2;     B 11, 20;     B 87, 94;
   B  1, 11;     B 13, 24;     B 91, 99;
