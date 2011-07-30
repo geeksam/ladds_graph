@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'brute_force_dfs'
 
 def build_tiny_ladds
   @tiny_ladds = Map.new
@@ -142,7 +143,7 @@ describe Map::Path do
 
   describe 'depth-first search' do
     it 'returns a list of paths that are circuits' do
-      # skip "too complex to test, I think"
+      skip "too complex to test, I think"
       paths = @path.go_forth_and_multiply({
         :max_path_length => 10,
         :backtrack_avoidance_factor => 4,
@@ -150,7 +151,7 @@ describe Map::Path do
       })
       # assert_kind_of Array, paths
       # refute paths.empty?
-      puts '', paths.to_a.sort.map { | e | e.last.inspect }.join("\n") |
+      puts '', paths.to_a.sort.map { | e | e.last.inspect }.join("\n")
 
       puts 'Total paths found: %d' % paths.length
       puts 'DFS steps: %d' % @path.dfs_counter.count
