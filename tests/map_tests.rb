@@ -26,8 +26,10 @@ describe Map do
       end
     end
 
-    it 'takes a scaling factor' do
-      assert_equal 42, tiny_ladds.distance_of(@b1, 42)
+    it "uses the map's scaling factor" do
+      assert_equal 1, tiny_ladds.distance_of(@b1)
+      tiny_ladds.scaling_factor = 42
+      assert_equal 42, tiny_ladds.distance_of(@b1)
     end
 
     def assert_angle(expected, actual, msg = '')

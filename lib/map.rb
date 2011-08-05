@@ -2,7 +2,7 @@ require 'graph'
 require 'set'
 
 class Map < Graph
-  attr_accessor :starting_and_ending_nodes, :coordinates
+  attr_accessor :starting_and_ending_nodes, :coordinates, :scaling_factor
 
   alias :streets :edges
   def street(n1, n2)
@@ -22,18 +22,19 @@ class Map < Graph
   def initialize(*args)
     super
     @coordinates = Hash.new
+    @scaling_factor = 1
   end
 
   def path(starting_node)
     MapPath.new(self, starting_node)
   end
 
-  def distance_of(edge, scaling_factor = 1)
+  def distance_of(edge)
     a, b = *edge.endpoints
-    distance_between_nodes(a, b, scaling_factor)
+    distance_between_nodes(a, b)
   end
 
-  def distance_between_nodes(n1, n2, scaling_factor = 1)
+  def distance_between_nodes(n1, n2)
     ax, ay = *XY(n1)
     bx, by = *XY(n2)
     rise = (ax - bx).abs
