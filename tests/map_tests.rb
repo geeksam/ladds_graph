@@ -1,39 +1,4 @@
 require 'test_helper'
-require 'brute_force_dfs'
-
-def build_tiny_ladds
-  @tiny_ladds = Map.new
-  @tiny_ladds.starting_and_ending_nodes = [:ladds_circle]
-
-  # This is a simplified map consisting of eight radial streets from Ladd's Circle and eight borders.
-  # East-west streets are (from top) Hawthorne, Harrison, and Division.
-  # North-south streets are (from left) 12th, 16th, and 20th.
-  # Diagonal streets are Ladd (NW-SE) and Elliot (SW-NE).
-  #
-  #   +1+2+
-  #   8\|/3
-  #   +-O-+
-  #   7/|\4
-  #   +6+5+
-
-  @b1 = @tiny_ladds.border(:hawthorne_and_12th, :hawthorne_and_16th)
-  @b2 = @tiny_ladds.border(:hawthorne_and_16th, :hawthorne_and_20th)
-  @b3 = @tiny_ladds.border(:hawthorne_and_20th, :harrison_and_20th)
-  @b4 = @tiny_ladds.border(:harrison_and_20th,  :division_and_20th)
-  @b5 = @tiny_ladds.border(:division_and_20th,  :division_and_16th)
-  @b6 = @tiny_ladds.border(:division_and_16th,  :division_and_12th)
-  @b7 = @tiny_ladds.border(:division_and_12th,  :harrison_and_12th)
-  @b8 = @tiny_ladds.border(:harrison_and_12th,  :hawthorne_and_12th)
-
-  @nw_ladd    = @tiny_ladds.street(:ladds_circle, :hawthorne_and_12th)
-  @n_16th     = @tiny_ladds.street(:ladds_circle, :hawthorne_and_16th)
-  @ne_elliot  = @tiny_ladds.street(:ladds_circle, :hawthorne_and_20th)
-  @e_harrison = @tiny_ladds.street(:ladds_circle, :harrison_and_20th)
-  @se_ladd    = @tiny_ladds.street(:ladds_circle, :division_and_20th)
-  @s_16th     = @tiny_ladds.street(:ladds_circle, :division_and_16th)
-  @sw_elliot  = @tiny_ladds.street(:ladds_circle, :division_and_12th)
-  @w_harrison = @tiny_ladds.street(:ladds_circle, :harrison_and_12th)
-end
 
 describe Map::Path do
   before do
@@ -46,9 +11,7 @@ describe Map::Path do
   end
 
   it 'makes a [shallow] copy of the sets and score when cloned' do
-    @path.travel_to :hawthorne_and_12th
-    @path.travel_to :hawthorne_and_16th
-    @path.travel_to :ladds_circle
+    @path.travel_to :hawthorne_and_12th, :hawthorne_and_16th, :ladds_circle
     assert_equal 2, @path.unique_streets.length
     assert_equal 0, @path.backtracked_streets.length
 
@@ -140,26 +103,4 @@ describe Map::Path do
       assert @path.is_circuit?
     end
   end
-
-  describe 'depth-first search' do
-    it 'returns a list of paths that are circuits' do
-      skip "too complex to test, I think"
-      paths = @path.go_forth_and_multiply({
-        :max_path_length => 10,
-        :backtrack_avoidance_factor => 4,
-        :persistence_factor => 3,
-      })
-      # assert_kind_of Array, paths
-      # refute paths.empty?
-      puts '', paths.to_a.sort.map { | e | e.last.inspect }.join("\n")
-
-      puts 'Total paths found: %d' % paths.length
-      puts 'DFS steps: %d' % @path.dfs_counter.count
-      # puts "Scores: %s" % paths.map(&:score).inspect
-    end
-    # it 'does not follow edge from step N on step N+1'
-    # it 'does not follow edge from step N on step N+K'  #?
-    # it 'stops recursing when score has not increased in the past N moves (n=?)'
-  end
-
 end
