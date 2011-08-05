@@ -26,6 +26,10 @@ describe Map do
       end
     end
 
+    it 'takes a scaling factor' do
+      assert_equal 42, tiny_ladds.distance_of(@b1, 42)
+    end
+
     def assert_angle(expected, actual, msg = '')
       assert_in_delta expected, actual, 0.5, msg
     end

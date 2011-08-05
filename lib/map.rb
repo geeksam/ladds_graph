@@ -28,21 +28,24 @@ class Map < Graph
     MapPath.new(self, starting_node)
   end
 
-  def distance_of(edge)
-    distance_between_nodes(*edge.endpoints)
+  def distance_of(edge, scaling_factor = 1)
+    a, b = *edge.endpoints
+    distance_between_nodes(a, b, scaling_factor)
   end
 
-  def distance_between_nodes(n1, n2)
+  def distance_between_nodes(n1, n2, scaling_factor = 1)
     ax, ay = *XY(n1)
     bx, by = *XY(n2)
     rise = (ax - bx).abs
     run  = (ay - by).abs
 
-    case
+    distance = case
     when rise.zero? then run
     when run .zero? then rise
     else Math.hypot(rise, run)
     end
+
+    distance * scaling_factor
   end
 
   def direction(n1, n2)

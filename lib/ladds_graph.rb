@@ -85,3 +85,7 @@ def XY(n, pair); Ladds.XY(n, pair); end
   XY 23, [412, 178];    XY 48, [147, 368];    XY 73, [ 57, 532];   XY 98, [539, 725];
   XY 24, [605, 170];    XY 49, [191, 368];    XY 74, [177, 534];   XY 99, [602, 722];
   XY 25, [283, 196];    XY 50, [245, 368];    XY 75, [445, 536];
+
+  # Approximate distance, in miles, of the edge between nodes 7 and 30
+  # (as measured by http://www.trails.com/googlemap.aspx)
+  ScalingFactor_7_30 = 0.165
