@@ -1,5 +1,7 @@
 require 'test_helper'
 
+CeeSquared = Math.hypot(1, 1)
+
 describe Map do
   before do
     build_tiny_ladds
@@ -19,7 +21,7 @@ describe Map do
 
     it 'works for spokes' do
       @diagonals.each do |e|
-        assert_equal Math.hypot(1, 1), tiny_ladds.distance_of(e), e.inspect
+        assert_equal CeeSquared, tiny_ladds.distance_of(e), e.inspect
       end
       @non_diagonals.each do |e|
         assert_equal 1, tiny_ladds.distance_of(e), e.inspect
@@ -176,4 +178,31 @@ describe Map::Path do
     end
   end
 
+  describe '#distance' do
+    it 'should be 0 for an empty path' do
+      assert_equal 0, @path.distance
+    end
+
+    it 'should be non-zero for a path with one street' do
+      @path.traverse @nw_ladd
+      assert_equal CeeSquared, @path.distance
+    end
+
+    it 'should be non-zero for a path with one street and one border' do
+      @path.traverse @nw_ladd
+      @path.traverse @b1
+      assert_equal 1 + CeeSquared, @path.distance
+    end
+
+    it 'should scale appropriately when the map has a scaling factor' do
+      tiny_ladds.scaling_factor = 2
+      assert_equal 0, @path.distance
+
+      @path.traverse @nw_ladd
+      assert_equal 2 * CeeSquared, @path.distance
+
+      @path.traverse @b1
+      assert_equal 2 * (1 + CeeSquared), @path.distance
+    end
+  end
 end

@@ -151,6 +151,12 @@ class Map < Graph
       @score ||= unique_streets.length - backtracked_streets.length
     end
 
+    def distance
+      segments.inject(0) { |mem, edge|
+        mem + @graph.distance_of(edge)
+      }
+    end
+
     def is_circuit?
       return false if segments.empty?
       graph.starting_and_ending_nodes.include?(start) && graph.starting_and_ending_nodes.include?(finish)
