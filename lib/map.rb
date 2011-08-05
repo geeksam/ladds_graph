@@ -92,7 +92,7 @@ class Map < Graph
 
   class MapPath < Graph::Path
     attr_reader :unique_streets, :backtracked_streets, :border_streets, :start, :finish
-    
+
     def initialize(*args)
       super(*args)
       @start = @finish = current_node
@@ -105,7 +105,7 @@ class Map < Graph
       @unique_streets      = original.unique_streets.dup
       @backtracked_streets = original.backtracked_streets.dup
     end
-    
+
     def inspect
       node = start
       nodes = []
@@ -122,7 +122,7 @@ class Map < Graph
         nodes.join(', '),
       ]
     end
-    
+
     def traverse(edge)
       super(edge)
       @score = nil
@@ -142,7 +142,7 @@ class Map < Graph
         unique_streets.add(edge)
       end
     end
-    
+
     def score
       @score ||= unique_streets.length - backtracked_streets.length
     end

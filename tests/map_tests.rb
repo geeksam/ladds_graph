@@ -20,11 +20,11 @@ describe Map::Path do
     junior.travel_to :hawthorne_and_12th
     assert_equal 1, junior.unique_streets.length
     assert_equal 1, junior.backtracked_streets.length
-    
+
     assert_equal 2, @path.unique_streets.length
     assert_equal 0, @path.backtracked_streets.length
   end
-  
+
   describe '#score' do
     def assert_score(expected_score)
       assert_equal expected_score, @path.score
@@ -34,7 +34,7 @@ describe Map::Path do
       assert_equal 0, @path.segments.length
       assert_score 0
     end
-    
+
     it 'should be 1 for a path with one street' do
       @path.traverse @nw_ladd
       assert_score 1
@@ -45,31 +45,31 @@ describe Map::Path do
       @path.traverse @b1
       assert_score 1
     end
-    
+
     it 'should be 2 for a path with two streets and one border' do
       @path.traverse @nw_ladd
       @path.traverse @b1
       @path.traverse @n_16th
       assert_score 2
     end
-    
+
     it 'should be -1 for a path with one street, traversed twice' do
       2.times { @path.traverse @nw_ladd }
       assert_score -1
     end
-    
+
     it 'should be -1 for a path with one street, traversed six times' do
       6.times { @path.traverse @nw_ladd }
       assert_score -1
     end
-    
+
     it 'should be 2 for a path with two streets traversed once each and one border traversed five times' do
       @path.traverse @nw_ladd
       5.times { @path.traverse @b1 }
       @path.traverse @n_16th
       assert_score 2
     end
-    
+
     it 'should be 0 for a path with one unique street, one border, and one backtracked street' do
       @path.traverse @nw_ladd
       @path.traverse @b1
@@ -83,7 +83,7 @@ describe Map::Path do
     it 'works' do
       assert_equal :ladds_circle, @path.start
       assert_equal :ladds_circle, @path.finish
-      
+
       @path.traverse @nw_ladd
       assert_equal :ladds_circle, @path.start
       assert_equal :hawthorne_and_12th, @path.finish

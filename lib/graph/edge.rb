@@ -8,12 +8,12 @@ class Graph
     end
 
     def adjacent_to?(other_edge)
-      self.n1 == other_edge.n1 || 
-      self.n1 == other_edge.n2 || 
-      self.n2 == other_edge.n1 || 
+      self.n1 == other_edge.n1 ||
+      self.n1 == other_edge.n2 ||
+      self.n2 == other_edge.n1 ||
       self.n2 == other_edge.n2
     end
-    
+
     def connects_to?(node)
       n1 == node || n2 == node
     end

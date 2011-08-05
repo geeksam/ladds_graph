@@ -14,7 +14,7 @@ class Graph
   def edges
     @edges ||= []
   end
-  
+
   def edge(*attrs)
     Edge.new(*attrs).tap do |e|
       adjacency_hash[e.n1] << e
