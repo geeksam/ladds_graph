@@ -88,4 +88,7 @@ def XY(n, pair); Ladds.XY(n, pair); end
 
   # Approximate distance, in miles, of the edge between nodes 7 and 30
   # (as measured by http://www.trails.com/googlemap.aspx)
-  ScalingFactor_7_30 = 0.165
+  distance_in_miles_between_7_and_30 = 0.165
+  distance_in_pixels_between_7_and_30 = Ladds.distance_between_nodes(7, 30)
+  miles_per_pixel = distance_in_miles_between_7_and_30 / distance_in_pixels_between_7_and_30
+  Ladds.scaling_factor = miles_per_pixel
