@@ -2,7 +2,7 @@ require 'graph'
 require 'set'
 
 class Map < Graph
-  attr_accessor :starting_and_ending_nodes
+  attr_accessor :starting_and_ending_nodes, :coordinates
 
   alias :streets :edges
   def street(n1, n2)
@@ -11,9 +11,83 @@ class Map < Graph
   def border(n1, n2)
     edge(n1, n2, 0)
   end
+  def XY(n, pair = nil)
+    if pair
+      @coordinates[n] = pair
+    else
+      @coordinates[n]
+    end
+  end
+
+  def initialize(*args)
+    super
+    @coordinates = Hash.new
+  end
 
   def path(starting_node)
     MapPath.new(self, starting_node)
+  end
+
+  def distance_of(edge)
+    distance_between_nodes(*edge.endpoints)
+  end
+
+  def distance_between_nodes(n1, n2)
+    ax, ay = *XY(n1)
+    bx, by = *XY(n2)
+    rise = (ax - bx).abs
+    run  = (ay - by).abs
+
+    case
+    when rise.zero? then run
+    when run .zero? then rise
+    else Math.hypot(rise, run)
+    end
+  end
+
+  def direction(n1, n2)
+    case angle_between(n1, n2)
+    when (  0.0 ..  22.5) then :E
+    when ( 22.5 ..  67.5) then :NE
+    when ( 67.5 .. 112.5) then :N
+    when (112.5 .. 157.5) then :NW
+    when (157.5 .. 202.5) then :W
+    when (202.5 .. 247.5) then :SW
+    when (247.5 .. 292.5) then :S
+    when (292.5 .. 337.5) then :SE
+    when (  0.0 .. 337.5) then :E
+    end
+  end
+
+  def angle_between(n1, n2)
+    ax, ay = *XY(n1)
+    bx, by = *XY(n2)
+    x_dist = bx - ax
+    y_dist = by - ay
+
+    # A few shortcuts
+    return  90 if x_dist.zero? && y_dist.positive?
+    return 180 if y_dist.zero? && x_dist.negative?
+    return 270 if x_dist.zero? && y_dist.negative?
+
+    hyp = Math.hypot(x_dist, y_dist)
+
+    if y_dist >= 0
+      sin = Math.asin(y_dist / hyp)
+      if x_dist >= 0  # Q1:  Any (so use sine)
+        return  0 + sin.to_degrees
+      else            # Q2:  Sine
+        return 90 + sin.to_degrees
+      end
+    else
+      if x_dist < 0   # Q3:  Tangent
+        tan = Math.atan(y_dist / x_dist)
+        return 180 + tan.to_degrees
+      else            # Q4:  Cosine
+        cos = Math.acos(x_dist / hyp)
+        return 270 + cos.to_degrees
+      end
+    end
   end
 
   class MapPath < Graph::Path

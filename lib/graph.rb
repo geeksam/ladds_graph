@@ -22,4 +22,8 @@ class Graph
       edges << e
     end
   end
+
+  def edge_between(n1, n2)
+    @adjacency_hash[n1].detect { |e| e.connects_to?(n2) }
+  end
 end

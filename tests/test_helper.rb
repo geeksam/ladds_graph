@@ -48,4 +48,20 @@ def build_tiny_ladds
   @s_16th     = @tiny_ladds.street(:ladds_circle, :division_and_16th)
   @sw_elliot  = @tiny_ladds.street(:ladds_circle, :division_and_12th)
   @w_harrison = @tiny_ladds.street(:ladds_circle, :harrison_and_12th)
+
+  @borders       = [@b1, @b2, @b3, @b4, @b5, @b6, @b7, @b8]
+  @spokes        = @tiny_ladds.streets - @borders
+  @diagonals     = [@nw_ladd, @se_ladd, @ne_elliot, @sw_elliot]
+  @non_diagonals = [@n_16th, @e_harrison, @s_16th, @w_harrison]
+
+  # XY coordinates!  Put the origin at the bottom left, which should make coordinates really obvious
+  @tiny_ladds.XY :ladds_circle,       [  0,  0 ]
+  @tiny_ladds.XY :hawthorne_and_12th, [ -1,  1 ]
+  @tiny_ladds.XY :hawthorne_and_16th, [  0,  1 ]
+  @tiny_ladds.XY :hawthorne_and_20th, [  1,  1 ]
+  @tiny_ladds.XY :harrison_and_12th,  [ -1,  0 ]
+  @tiny_ladds.XY :harrison_and_20th,  [  1,  0 ]
+  @tiny_ladds.XY :division_and_12th,  [ -1, -1 ]
+  @tiny_ladds.XY :division_and_16th,  [  0, -1 ]
+  @tiny_ladds.XY :division_and_20th,  [  1, -1 ]
 end
