@@ -16,6 +16,11 @@ def build_square
   @da = @ad = @square.edge(:d, :a, 1)
 end
 
+def tiny_ladds
+  build_tiny_ladds if @tiny_ladds.nil?
+  @tiny_ladds
+end
+
 def build_tiny_ladds
   @tiny_ladds = Map.new
   @tiny_ladds.starting_and_ending_nodes = [:ladds_circle]
