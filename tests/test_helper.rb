@@ -59,14 +59,20 @@ def build_tiny_ladds
   @diagonals     = [@nw_ladd, @se_ladd, @ne_elliot, @sw_elliot]
   @non_diagonals = [@n_16th, @e_harrison, @s_16th, @w_harrison]
 
-  # XY coordinates!  Put the origin at the bottom left, which should make coordinates really obvious
-  @tiny_ladds.XY :ladds_circle,       [  0,  0 ]
-  @tiny_ladds.XY :hawthorne_and_12th, [ -1,  1 ]
-  @tiny_ladds.XY :hawthorne_and_16th, [  0,  1 ]
-  @tiny_ladds.XY :hawthorne_and_20th, [  1,  1 ]
-  @tiny_ladds.XY :harrison_and_12th,  [ -1,  0 ]
-  @tiny_ladds.XY :harrison_and_20th,  [  1,  0 ]
-  @tiny_ladds.XY :division_and_12th,  [ -1, -1 ]
-  @tiny_ladds.XY :division_and_16th,  [  0, -1 ]
-  @tiny_ladds.XY :division_and_20th,  [  1, -1 ]
+  # XY coordinates!  Put the origin at the top left:
+  #   0 1 2
+  # 0 +1+2+
+  #   8\|/3
+  # 1 +-O-+
+  #   7/|\4
+  # 2 +6+5+
+  @tiny_ladds.XY :hawthorne_and_12th, [0, 0]
+  @tiny_ladds.XY :hawthorne_and_16th, [1, 0]
+  @tiny_ladds.XY :hawthorne_and_20th, [2, 0]
+  @tiny_ladds.XY :harrison_and_12th,  [0, 1]
+  @tiny_ladds.XY :ladds_circle,       [1, 1]
+  @tiny_ladds.XY :harrison_and_20th,  [2, 1]
+  @tiny_ladds.XY :division_and_12th,  [0, 2]
+  @tiny_ladds.XY :division_and_16th,  [1, 2]
+  @tiny_ladds.XY :division_and_20th,  [2, 2]
 end

@@ -9,7 +9,7 @@ describe Map do
 
   it 'does sanity checks on the graph before going any further, dammit' do
     assert_equal 16, tiny_ladds.edges.length
-    assert_equal [0, 0], tiny_ladds.XY(:ladds_circle)
+    assert_equal [1, 1], tiny_ladds.XY(:ladds_circle)
   end
 
   describe 'distance calculations' do
@@ -47,13 +47,6 @@ describe Map do
       assert_angle 225, tiny_ladds.angle_between(:ladds_circle, :division_and_12th),  'SW'
       assert_angle 270, tiny_ladds.angle_between(:ladds_circle, :division_and_16th),  'S'
       assert_angle 315, tiny_ladds.angle_between(:ladds_circle, :division_and_20th),  'SE'
-
-      begin
-        tiny_ladds.coordinates[:north_northeast] = [0.1, 1]
-	      assert_angle  84, tiny_ladds.angle_between(:ladds_circle, :north_northeast),  'NNE'
-      ensure
-        tiny_ladds.coordinates.delete(:north_northeast)
-      end
     end
 
     it 'can calculate a direction' do
@@ -65,15 +58,6 @@ describe Map do
       assert_equal :SW, tiny_ladds.direction(:ladds_circle, :division_and_12th)
       assert_equal :S,  tiny_ladds.direction(:ladds_circle, :division_and_16th)
       assert_equal :SE, tiny_ladds.direction(:ladds_circle, :division_and_20th)
-    end
-
-    it 'can calculate a direction even with a funky angle' do
-      begin
-        tiny_ladds.coordinates[:north_northeast] = [0.1, 1]
-        assert_equal :N, tiny_ladds.direction(:ladds_circle, :north_northeast)
-      ensure
-        tiny_ladds.coordinates.delete(:north_northeast)
-      end
     end
   end
 end

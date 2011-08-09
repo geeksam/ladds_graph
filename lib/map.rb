@@ -64,34 +64,36 @@ class Map < Graph
   end
 
   def angle_between(n1, n2)
+    # This is kind of horrible, but it seems to work, so I don't care that much.
     ax, ay = *XY(n1)
     bx, by = *XY(n2)
     x_dist = bx - ax
     y_dist = by - ay
 
     # A few shortcuts
-    return  90 if x_dist.zero? && y_dist.positive?
+    return  90 if x_dist.zero? && y_dist.negative?
     return 180 if y_dist.zero? && x_dist.negative?
-    return 270 if x_dist.zero? && y_dist.negative?
 
     hyp = Math.hypot(x_dist, y_dist)
 
     if y_dist >= 0
       sin = Math.asin(y_dist / hyp)
       if x_dist >= 0  # Q1:  Any (so use sine)
-        return  0 + sin.to_degrees
+        angle =  0 + sin.to_degrees
       else            # Q2:  Sine
-        return 90 + sin.to_degrees
+        angle = 90 + sin.to_degrees
       end
     else
       if x_dist < 0   # Q3:  Tangent
         tan = Math.atan(y_dist / x_dist)
-        return 180 + tan.to_degrees
+        angle = 180 + tan.to_degrees
       else            # Q4:  Cosine
         cos = Math.acos(x_dist / hyp)
-        return 270 + cos.to_degrees
+        angle = 270 + cos.to_degrees
       end
     end
+
+    return (360 - angle) % 360
   end
 
   class MapPath < Graph::Path
