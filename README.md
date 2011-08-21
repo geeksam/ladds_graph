@@ -40,7 +40,7 @@ Please do -- that's why I've put it on github.
 
 ## SPOILER ALERT!
 
-Most of the code I've written to solve this particular problem lives in lib/map.rb.  The scoring mechanism is built into the class Map::MapPath, but there should be enough examples in tests/map_tests.rb (under the describe block for the #score method) for you to be able to build your own scoring mechanism.  Or, if you want to peek at my scoring implementation without seeing, most of my solution is in the Map::MapPath#go_forth_and_multiply method, so if you just fold that method up, you should be able to remain mostly unbiased.  (=
+Most of the code I've written to solve this particular problem lives in lib/map.rb.  The scoring mechanism is built into the class Map::MapPath, but there should be enough examples in tests/map_tests.rb (under the describe block for the #score method) for you to be able to build your own scoring mechanism.  If you want to peek at my scoring implementation without seeing too many spoilers, most of my solution is in the Map::MapPath#go_forth_and_multiply method, so if you just fold that method up, you should be able to remain mostly unbiased.  (=
 
 ## Enjoy!
 
@@ -48,6 +48,6 @@ Feel free to email me:  geeksam at gmail.
 
 ## See also
 
-My coworker Dave's [JavaScript code](https://github.com/mildavw/ladds) playing with the same problem, from a different angle.
+My coworker Dave's [JavaScript code](https://github.com/mildavw/ladds) playing with the same problem, using a genetic algorithm to breed randomly-generated paths.  His code gets up into the 110-115 point range very quickly, whereas my very first solution struggled to get much higher than 90 points.
 
 -Sam
